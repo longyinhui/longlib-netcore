@@ -1,0 +1,24 @@
+﻿@page
+@model web.netcore.Pages.IndexModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    Hello cshtml
+    <form class="form-horizontal" method="post">
+        @Html.AntiForgeryToken()
+
+        <label for="Param">Params</label>:
+        <input type="text" name="Param">
+        <br />
+        <input type="submit" value="Submit" />
+    </form>
+    <div>@ViewData["Param"]</div>
+    <div>Result: @ViewData["Result"]</div>
+</body>
+</html>
