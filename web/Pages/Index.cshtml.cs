@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using longlib.cs.demo;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
+using longlib.database;
 
-namespace web.netcore.Pages
+namespace web.Pages
 {
     public class IndexModel : PageModel
     {
@@ -18,16 +20,23 @@ namespace web.netcore.Pages
             return Page();
         }
 
+        public IndexModel(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
+        private IConfiguration configuration;
         public IActionResult OnPost(ViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            //Demo.ReportDisplay();
+            //longlib.Demo.ReportDisplay();
 
             ViewData["Param"] = Data.Param;
-            ViewData["Result"] = Demo.ConnectMSSQL();
+            //ViewData["Result"] = longlib.database.Demo.SelectMySql(configuration["ConnectionString"], "select id,field01 from demo01");
+            ViewData["Result"] = longlib.database.Demo.ExportMySql(configuration["ConnectionString"], "select id,field01 from demo01", "/var/lib/mysql-files/test02.txt");
             return Page();
         }
 

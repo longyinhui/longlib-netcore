@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace longlib.cs
+namespace longlib
 {
     public class Class1
     {

@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Xml;
 
-namespace longlib.cs.database
+namespace longlib.database
 {
     /*
     public class DbConnector : IDisposable

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "longlib.cs", "longlib.cs\longlib.cs.csproj", "{1ECE5562-F46B-4FB6-A092-7E61F4A9E31A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "longlib", "longlib.cs\longlib.csproj", "{1ECE5562-F46B-4FB6-A092-7E61F4A9E31A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web", "web.netcore\web.csproj", "{675B998B-F247-4A05-BF1A-72A64A3246C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web", "web\web.csproj", "{675B998B-F247-4A05-BF1A-72A64A3246C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "longlib.database", "longlib.database\longlib.database.csproj", "{5EF5C1AC-E978-4E77-BE46-41C977C0EDE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{675B998B-F247-4A05-BF1A-72A64A3246C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{675B998B-F247-4A05-BF1A-72A64A3246C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{675B998B-F247-4A05-BF1A-72A64A3246C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EF5C1AC-E978-4E77-BE46-41C977C0EDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EF5C1AC-E978-4E77-BE46-41C977C0EDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EF5C1AC-E978-4E77-BE46-41C977C0EDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EF5C1AC-E978-4E77-BE46-41C977C0EDE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

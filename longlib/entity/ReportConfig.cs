@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace longlib.cs.entity
+namespace longlib.entity
 {
     public class ReportConfig
     {

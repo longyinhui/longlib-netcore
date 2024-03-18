@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Data.SqlClient;
-using longlib.cs.entity;
-using longlib.cs.report;
-using longlib.cs.database;
+using longlib.entity;
+using longlib.report;
 
-namespace longlib.cs.demo
+namespace longlib.demo
 {
     public class Demo
     {
@@ -72,15 +70,5 @@ namespace longlib.cs.demo
 
 			Report report = new Report(reportConfig, xmlSample);
 		}
-    
-		public static string ConnectMSSQL() 
-		{
-			string result = "";
-            DbHelper dbHelper = new DbHelper(new SqlConnection(@"Data Source=ryemsdapaxdb1.na.avonet.net;Initial Catalog=DRMPOS_MY;User ID=drmpos_my;Password=drmpos_my;"));
-			SqlDataReader dr = (SqlDataReader)dbHelper.ExecuteReader("select top 10 userid,name from userinfor", System.Data.CommandType.Text, null);
-			while (dr.Read())
-				result += dr[0].ToString() + "," + dr[0].ToString() + "; ";
-			return result;
-        }
-	}
+    }
 }

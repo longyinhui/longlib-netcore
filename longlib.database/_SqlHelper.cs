@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace longlib.cs.database
+namespace longlib.database
 {
     public interface ISqlHelper
     {

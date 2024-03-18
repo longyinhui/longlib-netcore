@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -7,9 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Oracle.ManagedDataAccess.Client;
+using Microsoft.Data.SqlClient;
 using System.Diagnostics;
+using MySql.Data.MySqlClient;
+using System.Xml;
 
-namespace longlib.cs.database
+namespace longlib.database
 {
     public class DbHelper : IDisposable
     {
@@ -102,20 +104,20 @@ namespace longlib.cs.database
             return Execute(sqlText, commandType, () => Command.ExecuteReader(), parms);
         }
 
-        public void OracleSqlLoader(string dataFilename, Encoding encoding, string delimiter, string lineBreak, string tableName)
+        public void OracleSqlLoader(string path, string tableName, Encoding encoding = null, string delimiter = ";", string lineBreak = "")
         {
             if (Command.GetType() != typeof(OracleCommand))
                 throw new Exception("This function only support Oracle Database.");
 
             //copy source data
-            string txtFilename = dataFilename = ".txt";
+            string txtFilename = path + ".txt";
             StreamReader sr;
 
             if (encoding == null)
-                File.Copy(dataFilename, txtFilename, true);
+                File.Copy(path, txtFilename, true);
             else
             {
-                using (sr = new StreamReader(dataFilename, encoding))
+                using (sr = new StreamReader(path, encoding))
                 using (StreamWriter sw = new StreamWriter(txtFilename, false, encoding))
                 {
                     char[] buffer = new char[50000];
@@ -224,6 +226,29 @@ namespace longlib.cs.database
         {
 
         }
+
+        public int MySqlLoadDataInfile(string path, string tableName, Encoding encoding = null, string delimiter = ";", string lineBreak = "")
+        {
+            if (Connection.GetType() != typeof(MySqlConnection))
+                throw new Exception("This function only support MySql Database.");
+
+            string sqlText = "LOAD DATA INFILE '" + path + "'" + " INTO TABLE " + tableName;
+            if (!string.IsNullOrEmpty(delimiter)) sqlText += " FIELD TERMINATED BY '" + delimiter + "'";
+
+            //select * from demo01 into outfile '/var/lib/mysql-files/test01.txt'
+            return ExecuteNonQuery(sqlText, CommandType.Text, null);
+        }
+
+        public int MySqlSelectOutFile(string sqlText, string path, string delimiter = ",", string lineBreak = "")
+        {
+            if (Connection.GetType() != typeof(MySqlConnection))
+                throw new Exception("This function only support MySql Database.");
+
+            sqlText += " INTO OUTFILE '" + path + "'";
+            //select * from demo01 into outfile '/var/lib/mysql-files/test01.txt'
+            return ExecuteNonQuery(sqlText, CommandType.Text, null);
+        }
+
         public static void ParseConnectString(string connectionString, out string userId, out string password, out string dataSource)
         {
             userId = ""; password = ""; dataSource = "";

@@ -4,10 +4,10 @@ using System.Text;
 using System.Xml;
 using System.Xml.Xsl;
 using System.IO;
-using longlib.cs.entity;
-using longlib.cs.data;
+using longlib.entity;
+using longlib.data;
 
-namespace longlib.cs.report
+namespace longlib.report
 {
     public class Report
     {

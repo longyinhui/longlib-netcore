@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\longlib.cs\longlib.cs.csproj" />
+    <ProjectReference Include="..\longlib.cs\longlib.csproj" />
+    <ProjectReference Include="..\longlib.database\longlib.database.csproj" />
   </ItemGroup>
 
 </Project>

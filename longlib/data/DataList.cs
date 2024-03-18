@@ -5,7 +5,7 @@ using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace longlib.cs.data
+namespace longlib.data
 {
     public class DataList : List<DataLine>
     {
